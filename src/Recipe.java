@@ -7,10 +7,12 @@ public class Recipe<T extends Product> {
     private T product;
     private T product1;
     private T product2;
+    private static Set<Product> lotsOfProducts ;
     private static Set<Recipe> productSet = new HashSet<>();
 
-    public Recipe(String nameOfTheRecipe, T product) {
-        this.product = product;
+
+    public Recipe(String nameOfTheRecipe, Set<Product>lotsOfProducts) {
+        this.lotsOfProducts = new HashSet<>();
         this.sumOfTheRecipe = product.getPrice();
         this.nameOfTheRecipe = nameOfTheRecipe;
     }
@@ -30,6 +32,9 @@ public class Recipe<T extends Product> {
         this.nameOfTheRecipe = nameOfTheRecipe;
     }
 
+//    public static void addlotsOfProducts(Product product) throws Exception {
+//        lotsOfProducts.add(product);
+//    }
     public static void addProductSet(Recipe recipe) throws Exception {
         for (Recipe recipe1 : productSet) {
             if (recipe1.getNameOfTheRecipe().equals(recipe.getNameOfTheRecipe())) {
@@ -37,6 +42,14 @@ public class Recipe<T extends Product> {
             }
         }
         productSet.add(recipe);
+    }
+
+    public  Set<Product> getLotsOfProducts() {
+        return lotsOfProducts;
+    }
+
+    public static void setLotsOfProducts(Set<Product> lotsOfProducts) {
+        Recipe.lotsOfProducts = lotsOfProducts;
     }
 
     public double getSumOfTheRecipe() {

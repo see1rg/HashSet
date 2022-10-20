@@ -23,7 +23,9 @@ public class Main {
         Recipe<Product> recipe2 = new Recipe<>("recipe2", milk, plum);
         Recipe<Product> recipe3 = new Recipe<>("recipe3", apple, oil, bread);
         Recipe<Product> recipe4 = new Recipe<>("recipe4", meat, oil, bread);
-
+        recipe1.getLotsOfProducts().add(new Product("мука",123,222));
+        Recipe recipe5;
+        recipe5 = new Recipe<>("jdkj", (Set<Product>) recipe1);
         Recipe.addProductSet(recipe1);
         Recipe.addProductSet(recipe2);
         Recipe.addProductSet(recipe3);
@@ -69,7 +71,7 @@ public class Main {
                 "Петрович", "12.02.1977"));
         System.out.println(Passport.getPassport());
 
-        System.out.println(Passport.findThePassport("2313131"));
+        System.out.println(Passport.findThePassport("23131321"));
 
     }
 
