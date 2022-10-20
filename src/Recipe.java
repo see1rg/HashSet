@@ -70,9 +70,12 @@ public class Recipe <T extends Product> {
 
     @Override
     public String toString() {
-        return "Recipes{" +
+        return "Recipe{" +
                 "sumOfTheRecipe=" + sumOfTheRecipe +
                 ", nameOfTheRecipe='" + nameOfTheRecipe + '\'' +
+                ", product=" + product +
+                ", product1=" + product1 +
+                ", product2=" + product2 +
                 '}';
     }
 }
