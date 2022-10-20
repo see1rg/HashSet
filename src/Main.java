@@ -20,9 +20,9 @@ public class Main {
         Product.addBucket(meat);
 
         Recipe<Product> recipe1 = new Recipe<>("recipe1", milk, plum);
-        Recipe<Product> recipe2 = new Recipe<>("recipe2", milk,plum);
-        Recipe<Product> recipe3 = new Recipe<>("recipe3", apple,oil,bread);
-        Recipe<Product> recipe4 = new Recipe<>("recipe4", meat,oil,bread);
+        Recipe<Product> recipe2 = new Recipe<>("recipe2", milk, plum);
+        Recipe<Product> recipe3 = new Recipe<>("recipe3", apple, oil, bread);
+        Recipe<Product> recipe4 = new Recipe<>("recipe4", meat, oil, bread);
 
         Recipe.addProductSet(recipe1);
         Recipe.addProductSet(recipe2);
@@ -42,13 +42,7 @@ public class Main {
         }
         System.out.print(list + ", " + "\n");
 
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) % 2 == 0) {
-                list.remove(i);
-                i = 0;
-            }
-
-        }
+        list.removeIf(e -> e % 2 == 1);
         System.out.print(list + ", ");
 
         //        Задание 3.2
