@@ -4,25 +4,33 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Product.addBucket(new Product("молоко", 150, 1));
-        Product.addBucket(new Product("слива", 300, 2));
-        Product.addBucket(new Product("яблоко", 220, 3));
-        Product.addBucket(new Product("масло", 630, 4));
-        Product.addBucket(new Product("хлеб", 140, 6));
-        Product.addBucket(new Product("мясо", 980, 8));
 
-        Recipes.addProductSet(new Recipes(123, "Парацетомолл"));
-        Recipes.addProductSet(new Recipes(21.3123, "Суп"));
-        Recipes.addProductSet(new Recipes(555, "Парцетомолл"));
-        Recipes.addProductSet(new Recipes(123, "Парацетоолл"));
+        Product milk = new Product("молоко", 150, 1);
+        Product plum = new Product("слива", 300, 2);
+        Product apple = new Product("яблоко", 220, 3);
+        Product oil = new Product("масло", 630, 4);
+        Product bread = new Product("хлеб", 140, 6);
+        Product meat = new Product("мясо", 980, 8);
 
-//        System.out.println( meat.equals(bread));
-//        sugar.setPrice(27.3);
-//        sugar.setType("сахар");
-//        Product.addBucket(sugar);
-//        Product.addBucket(apple);
+        Product.addBucket(milk);
+        Product.addBucket(plum);
+        Product.addBucket(apple);
+        Product.addBucket(oil);
+        Product.addBucket(bread);
+        Product.addBucket(meat);
+
+        Recipe<Product> recipe1 = new Recipe<>("recipe1", milk, plum);
+        Recipe<Product> recipe2 = new Recipe<>("recipe2", milk,plum);
+        Recipe<Product> recipe3 = new Recipe<>("recipe3", apple,oil,bread);
+        Recipe<Product> recipe4 = new Recipe<>("recipe4", meat,oil,bread);
+
+        Recipe.addProductSet(recipe1);
+        Recipe.addProductSet(recipe2);
+        Recipe.addProductSet(recipe3);
+        Recipe.addProductSet(recipe4);
+
         System.out.println(Product.getBucket());
-        System.out.println(Recipes.getProductSet());
+        System.out.println(Recipe.getProductSet());
 
 //        Задание 2.2
 
