@@ -52,9 +52,9 @@ public class Main {
             int a = randomInt();
             int b = randomInt();
             int multiplication = a * b;
-            String primer = " Задание: " + a + " * " + b + " = ?";
+            String exercise = " Задание: " + a + " * " + b + " = ?";
             if (!(check.contains(multiplication))) {
-                questions.add(i, primer);
+                questions.add(i, exercise);
                 check.add(multiplication);
                 i++;
             }
