@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -19,64 +17,15 @@ public class Main {
         Product.addBucket(bread);
         Product.addBucket(meat);
 
-
-        Set<Product> set1 = new HashSet<>();
-        set1.add(meat);
-        set1.add(apple);
-        set1.add(plum);
-        set1.add(oil);
+        Map<Product, Integer> set1 = new HashMap<>();
+        set1.put(meat, 5);
+        set1.put(apple, 4);
+        set1.put(plum, 2);
+        set1.put(oil, 8);
         Recipe<Product> recipe5 = new Recipe<>("jdkj", set1);
 
         System.out.println(recipe5.getSumOfTheRecipe());
-
         System.out.println(Product.getBucket());
-        System.out.println(Recipe.getProductSet());
 
-//        Задание 2.2
-
-        ArrayList<Integer> list = new ArrayList<>();
-        int capacity = 20;
-        for (int i = 0; i < capacity; i++) {
-            int random_int = (int) Math.floor(Math.random() * (1000 - 1));
-            list.add(random_int);
-        }
-        System.out.print(list + ", " + "\n");
-
-        list.removeIf(e -> e % 2 == 1);
-        System.out.print(list + ", ");
-
-        //        Задание 3.2
-        ArrayList<String> questions = new ArrayList<>();
-        Set<Integer> check = new HashSet<>();
-        for (int i = 0; i < 15; ) {
-            int a = randomInt();
-            int b = randomInt();
-            int multiplication = a * b;
-            String exercise = " Задание: " + a + " * " + b + " = ?";
-            if (!(check.contains(multiplication))) {
-                questions.add(i, exercise);
-                check.add(multiplication);
-                i++;
-            }
-        }
-        System.out.println();
-        for (int i = 0; i < questions.size(); i++) {
-            System.out.println(questions.get(i));
-        }
-
-//        Задание 3.3
-        Passport.addPassport(new Passport("23131321", "Малахов", "Игорь",
-                "Петрович", "12.02.1977"));
-        System.out.println(Passport.getPassport());
-
-        System.out.println(Passport.findThePassport("23131321"));
-
-
-    }
-
-    public static int randomInt() {
-        //        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min); from 2 to 9
-        int a = (int) Math.floor(Math.random() * (9 - 2 + 1) + 2);
-        return a;
     }
 }

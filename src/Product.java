@@ -14,7 +14,6 @@ public class Product {
         this.weight = weight;
     }
 
-
     public static Set<Product> getBucket() {
         return bucket;
     }
@@ -29,7 +28,6 @@ public class Product {
             throw new Exception("Продукт " + type + " уже есть в корзине.");
         }
     }
-
 
     public String getType() {
         return type;

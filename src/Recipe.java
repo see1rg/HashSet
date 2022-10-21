@@ -1,18 +1,25 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Recipe<T extends Product> {
     private double sumOfTheRecipe;
     private String nameOfTheRecipe;
-    private static Set<Product> setOfProducts;
+    private static Map<Product, Integer> setOfProducts;
     private static final Set<Recipe> productSet = new HashSet<>();
 
-
-    public Recipe(String nameOfTheRecipe, Set<Product> setOfProducts) {
-        Recipe.setOfProducts = new HashSet<>();
+    public Recipe(String nameOfTheRecipe, Map<Product, Integer> setOfProducts) {
+        Recipe.setOfProducts = new HashMap<>();
         double sumOfTheRecipe1 = 0;
-        for (Product product : setOfProducts) {
-            sumOfTheRecipe1 += product.getPrice();
+        for (Map.Entry<Product, Integer> productIntegerEntry : setOfProducts.entrySet()) {
+            int amount;
+            if (productIntegerEntry.getValue() == 0 || productIntegerEntry.getValue() < 0) {
+                amount = 1;
+            } else {
+                amount = productIntegerEntry.getValue();
+            }
+            sumOfTheRecipe1 += (productIntegerEntry.getKey().getPrice()) * amount;
         }
         this.sumOfTheRecipe = sumOfTheRecipe1;
         this.nameOfTheRecipe = nameOfTheRecipe;
@@ -27,12 +34,11 @@ public class Recipe<T extends Product> {
         productSet.add(recipe);
     }
 
-
-    public static Set<Product> getSetOfProducts() {
+    public static Map<Product, Integer> getSetOfProducts() {
         return setOfProducts;
     }
 
-    public static void setSetOfProducts(Set<Product> setOfProducts) {
+    public static void setSetOfProducts(Map<Product, Integer> setOfProducts) {
         Recipe.setOfProducts = setOfProducts;
     }
 
@@ -48,14 +54,23 @@ public class Recipe<T extends Product> {
         return productSet;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Recipe recipe)) return false;
+        if (!(o instanceof Recipe<?> recipe)) return false;
 
         if (Double.compare(recipe.getSumOfTheRecipe(), getSumOfTheRecipe()) != 0) return false;
-        return getNameOfTheRecipe() != null ? getNameOfTheRecipe().equals(recipe.getNameOfTheRecipe()) : recipe.getNameOfTheRecipe() == null;
+        return getNameOfTheRecipe().equals(recipe.getNameOfTheRecipe());
     }
 
-
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getSumOfTheRecipe());
+        result = (int) (temp ^ (temp >>> 32));
+        result = 31 * result + getNameOfTheRecipe().hashCode();
+        return result;
+    }
 }
