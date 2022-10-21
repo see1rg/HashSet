@@ -1,40 +1,23 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class Recipe<T extends Product> {
+public class Recipe <T extends Product> {
     private double sumOfTheRecipe;
     private String nameOfTheRecipe;
-    private T product;
-    private T product1;
-    private T product2;
-    private static Set<Product> lotsOfProducts ;
-    private static Set<Recipe> productSet = new HashSet<>();
+    private static Set<Product> setOfProducts;
+    private static final Set<Recipe> productSet = new HashSet<>();
 
 
-    public Recipe(String nameOfTheRecipe, Set<Product>lotsOfProducts) {
-        this.lotsOfProducts = new HashSet<>();
-        this.sumOfTheRecipe = product.getPrice();
+    public Recipe(String nameOfTheRecipe, Set<Product> setOfProducts) {
+        Recipe.setOfProducts = new HashSet<>();
+        double sumOfTheRecipe1 = 0;
+        for (Product product : setOfProducts) {
+           sumOfTheRecipe1 = sumOfTheRecipe1 + product.getPrice();
+        }
+        this.sumOfTheRecipe = sumOfTheRecipe1;
         this.nameOfTheRecipe = nameOfTheRecipe;
     }
 
-    public Recipe(String nameOfTheRecipe, T product, T product1) {
-        this.product = product;
-        this.product1 = product1;
-        this.sumOfTheRecipe = product.getPrice() + product1.getPrice();
-        this.nameOfTheRecipe = nameOfTheRecipe;
-    }
-
-    public Recipe(String nameOfTheRecipe, T product, T product1, T product2) {
-        this.product = product;
-        this.product1 = product1;
-        this.product2 = product2;
-        this.sumOfTheRecipe = product.getPrice() + product1.getPrice() + product2.getPrice();
-        this.nameOfTheRecipe = nameOfTheRecipe;
-    }
-
-//    public static void addlotsOfProducts(Product product) throws Exception {
-//        lotsOfProducts.add(product);
-//    }
     public static void addProductSet(Recipe recipe) throws Exception {
         for (Recipe recipe1 : productSet) {
             if (recipe1.getNameOfTheRecipe().equals(recipe.getNameOfTheRecipe())) {
@@ -44,12 +27,14 @@ public class Recipe<T extends Product> {
         productSet.add(recipe);
     }
 
-    public  Set<Product> getLotsOfProducts() {
-        return lotsOfProducts;
+
+
+    public static Set<Product> getSetOfProducts() {
+        return setOfProducts;
     }
 
-    public static void setLotsOfProducts(Set<Product> lotsOfProducts) {
-        Recipe.lotsOfProducts = lotsOfProducts;
+    public static void setSetOfProducts(Set<Product> setOfProducts) {
+        Recipe.setOfProducts = setOfProducts;
     }
 
     public double getSumOfTheRecipe() {
@@ -73,24 +58,5 @@ public class Recipe<T extends Product> {
         return getNameOfTheRecipe() != null ? getNameOfTheRecipe().equals(recipe.getNameOfTheRecipe()) : recipe.getNameOfTheRecipe() == null;
     }
 
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(getSumOfTheRecipe());
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (getNameOfTheRecipe() != null ? getNameOfTheRecipe().hashCode() : 0);
-        return result;
-    }
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "sumOfTheRecipe=" + sumOfTheRecipe +
-                ", nameOfTheRecipe='" + nameOfTheRecipe + '\'' +
-                ", product=" + product +
-                ", product1=" + product1 +
-                ", product2=" + product2 +
-                '}';
-    }
 }

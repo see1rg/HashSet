@@ -19,17 +19,13 @@ public class Main {
         Product.addBucket(bread);
         Product.addBucket(meat);
 
-        Recipe<Product> recipe1 = new Recipe<>("recipe1", milk, plum);
-        Recipe<Product> recipe2 = new Recipe<>("recipe2", milk, plum);
-        Recipe<Product> recipe3 = new Recipe<>("recipe3", apple, oil, bread);
-        Recipe<Product> recipe4 = new Recipe<>("recipe4", meat, oil, bread);
-        recipe1.getLotsOfProducts().add(new Product("мука",123,222));
-        Recipe recipe5;
-        recipe5 = new Recipe<>("jdkj", (Set<Product>) recipe1);
-        Recipe.addProductSet(recipe1);
-        Recipe.addProductSet(recipe2);
-        Recipe.addProductSet(recipe3);
-        Recipe.addProductSet(recipe4);
+
+        Set<Product> recipe11 = new HashSet<>();
+        recipe11.add(meat);
+        recipe11.add(apple);
+        recipe11.add(plum);
+        recipe11.add(oil);
+        Recipe<Product> recipe5 = new Recipe<>("jdkj", recipe11 );
 
         System.out.println(Product.getBucket());
         System.out.println(Recipe.getProductSet());
@@ -72,6 +68,8 @@ public class Main {
         System.out.println(Passport.getPassport());
 
         System.out.println(Passport.findThePassport("23131321"));
+
+
 
     }
 
