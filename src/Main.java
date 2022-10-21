@@ -20,12 +20,14 @@ public class Main {
         Product.addBucket(meat);
 
 
-        Set<Product> recipe11 = new HashSet<>();
-        recipe11.add(meat);
-        recipe11.add(apple);
-        recipe11.add(plum);
-        recipe11.add(oil);
-        Recipe<Product> recipe5 = new Recipe<>("jdkj", recipe11 );
+        Set<Product> set1 = new HashSet<>();
+        set1.add(meat);
+        set1.add(apple);
+        set1.add(plum);
+        set1.add(oil);
+        Recipe<Product> recipe5 = new Recipe<>("jdkj", set1);
+
+        System.out.println(recipe5.getSumOfTheRecipe());
 
         System.out.println(Product.getBucket());
         System.out.println(Recipe.getProductSet());
@@ -68,7 +70,6 @@ public class Main {
         System.out.println(Passport.getPassport());
 
         System.out.println(Passport.findThePassport("23131321"));
-
 
 
     }

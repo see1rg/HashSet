@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class Recipe <T extends Product> {
+public class Recipe<T extends Product> {
     private double sumOfTheRecipe;
     private String nameOfTheRecipe;
     private static Set<Product> setOfProducts;
@@ -12,7 +12,7 @@ public class Recipe <T extends Product> {
         Recipe.setOfProducts = new HashSet<>();
         double sumOfTheRecipe1 = 0;
         for (Product product : setOfProducts) {
-           sumOfTheRecipe1 = sumOfTheRecipe1 + product.getPrice();
+            sumOfTheRecipe1 += product.getPrice();
         }
         this.sumOfTheRecipe = sumOfTheRecipe1;
         this.nameOfTheRecipe = nameOfTheRecipe;
@@ -26,7 +26,6 @@ public class Recipe <T extends Product> {
         }
         productSet.add(recipe);
     }
-
 
 
     public static Set<Product> getSetOfProducts() {
